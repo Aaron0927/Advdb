@@ -1,0 +1,35 @@
+﻿{% extends "admin_header.html" %}
+{% block admin_body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>学生名单</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {% if flag == 1 %}
+            {% for s in stu %}
+            <li class="list-group-item">
+                <h4>
+                    <strong>学号：</strong>{{s.s_id}}
+                    <strong>姓名：</strong>{{s.s_name}}
+                    <a href="{%url 'home.views.call' s.id%}">点名</a>
+                </h4>
+            </li>
+            {% endfor %}
+            {% elif flag == 0 %}
+            <li class="list-group-item">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <strong>提示：</strong>点名结束！
+                </div>
+            </li>
+            <center>
+                <a href="{%url 'home.views.admin_home'%}" class="btn btn-primary btn-lg active" role="button">返回</a>
+            </center>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

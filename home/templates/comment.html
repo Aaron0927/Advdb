@@ -1,0 +1,50 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>报告评分</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul class="list-group">
+				<li class="list-group-item">
+				<h4>
+					<strong>报告主题：</strong>{{report.r_title}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>报告人：</strong>{{report.r_reporter}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>学号：</strong>{{report.r_id}}
+				</h4>
+				</li>
+			</ul>
+			<form  method='POST'>
+				<h3>评分原因：</h3>
+				<textarea class="form-control" row="3" name='c_reason' required autofocus></textarea>
+				<br>
+			<div class="row">
+						<div class="col-xs-2">
+							<center>	<h4>请打分：</h4></center>
+						</div>
+						<div class="col-xs-1">
+							<input type="text" class="form-control" placeholder="分数"
+							name='c_score' margin-top=100px> 
+						</div>
+						<div class="col-xs-2">
+						</div>
+				<div class="col-xs-2">
+					<button type="submit" class="btn btn-primary">提交</button>	
+				</div>
+				<div class="col-xs-3">
+					<a href="{%url 'home.views.home' s_id%}"><button class="btn
+							btn-primary">返回</button></a>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

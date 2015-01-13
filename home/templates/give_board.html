@@ -1,0 +1,17 @@
+﻿{% extends "admin_header.html" %}
+	{% block admin_body %}
+		<form role="form" class="form-signin" method = 'POST'>
+			{% csrf_token %}
+			<h2 class="form-signin-heading">发布公告</h2>
+			<input type="text" class="form-control" placeholder="标题" name='b_title' required autofocus>
+			<textarea class="form-control" row="3" name='b_content'></textarea>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">发 布</button>
+		</form>
+		{% if flag == 1 %}	
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<strong>提示</strong>公告发布成功，请在“历史公告”查看！
+			</div>
+			{% endif %}
+	{% endblock %}
+

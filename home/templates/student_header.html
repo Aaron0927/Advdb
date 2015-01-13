@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>高级数据库评分系统</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	.form-signin{
+		max-width:330px;
+		padding:15px;
+		margin:0 auto;
+	}
+	input{
+		margin-bottom:3px;
+	}
+body{
+		background-color:#CCC;
+
+}
+</head>
+
+</style>
+<body>
+<div class="container">
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!---设置手机适配-->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="li navbar-brand" href="#">{{s_id}}({{s_class}})</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="{%url 'home.views.home' s_id%}">首页</a></li>
+					<li><a href="{% url 'home.views.my_board_history' %}">历史公告</a></li>
+				</ul>
+				<form class="navbar-form navbar-left" role="search" method = 'POST'>
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search" name="student_search">
+					</div>
+					<button type="submit" class="btn btn-default">搜 索</button>
+				</form>
+      
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="{%url 'home.views.setting'%}">个人中心</a></li>
+					<li><a href="{%url 'home.views.login'%}">注销</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	{% block student_body %}
+	{% endblock %}
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>																				
+
+</body>
+</html>
+

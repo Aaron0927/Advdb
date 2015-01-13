@@ -1,0 +1,44 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}
+
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>《{{comment.c_report.r_title}}》评分情况</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul class="list-group">
+				<li class="list-group-item">
+				<h4>
+					<strong>报告主题：</strong>{{comment.c_report.r_title}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>报告人：</strong>{{comment.c_report.r_reporter}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>学号：</strong>{{comment.c_report.r_id}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>我的评分：</strong>{{comment.c_score}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>评分原因：</strong>{{comment.c_reason}}
+				</h4>
+				</li>
+			</ul>
+			<center>
+				<a href="{%url 'home.views.home' s_id%}" class="btn btn-primary btn-lg active"
+			role="button">返回</a>
+			</center>
+		</div>
+	</div>
+{% endblock %}
+

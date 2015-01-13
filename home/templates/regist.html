@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>用户注册</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	.form-signin{
+		max-width:330px;
+		padding:15px;
+		margin:0 auto;
+	}
+	input{
+		margin-bottom:3px;
+	}
+
+body{
+		background-color:#CCC;
+	}
+</head>
+</style>
+<body>
+
+
+<div class="container">
+	<h1>报告评分系统</h1>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="{% url 'home.views.login'%}">登录</a></li>
+				</ul>
+		</div>
+	</nav>
+
+	<form role="form" class="form-signin" method = 'POST'>
+		{% csrf_token %}
+		<h2 class="form-signin-heading">欢迎注册</h2>
+		<input type="text" class="form-control" placeholder="输入学号" name='s_id' required autofocus>
+		<input type="text" class="form-control" placeholder="输入姓名" name="s_name" required>
+		<input type="password" class="form-control" placeholder="输入密码" name="s_passwd" required>
+		<input type="email" class="form-control" placeholder="输入邮箱" name="s_email" required>
+		<input type="text" class="form-control" placeholder="输入班级" name='s_class'>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">注册</button>
+	</form>
+
+	{% if flag == 0 %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		    <strong>提示：</strong>该用户已经存在！
+		</div>
+	{% elif flag == 2 %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		    <strong>提示：</strong>该班级不存在！
+		</div>
+    {% elif flag == 3 %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		    <strong>提示：</strong>班级不不能为空！
+		</div>
+	{% endif %}
+
+</div>
+
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>																				
+
+</body>
+</html>
+

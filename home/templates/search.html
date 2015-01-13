@@ -1,0 +1,58 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>学生检索结果</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {% for u in users %}
+            <li class="list-group-item">
+                <h4>
+                    <strong>姓名：</strong>{{u.s_name}}
+                    <strong>学号：</strong>{{u.s_id}}
+                </h4>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>通知检索结果</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {% for b in boards %}
+            <li class="list-group-item">
+                <h4>
+                    <strong>通知内容：</strong>{{b.b_content}}
+                </h4>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3>报告检索结果</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            {% for r in reports %}
+            <li class="list-group-item">
+                <h4>
+                    <strong>报告人：</strong>{{r.r_reporter}}
+                    <strong>报告主题：</strong>{{r.r_title}}
+                </h4>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="panel-body">
+        <center>
+            <a href="{%url 'home.views.home' s_id%}" class="btn btn-primary btn-lg active" role="button">返回</a>
+        </center>
+    </div>
+</div>
+{% endblock %}

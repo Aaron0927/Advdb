@@ -1,0 +1,103 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+            <h3>最新公告</h3>
+		</div>
+		<div class="panel-body">	   
+			<ul class="list-group">
+				{% if newest_board %}
+				<li class="list-group-item">
+				<h4>
+					<strong>标题：</strong>{{newest_board.b_title}} ({{newest_board.b_time|date:"Y-m-d H:i:s"}})
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>公告内容：</strong>{{newest_board.b_content}}
+				</h4>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>提交报告主题</h3>
+		</div>
+		<div class="panel-body">	    
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="input-group">
+						<form role="form"  method = 'POST'>
+							<input type="text" class="form-control" placeholder="报告主题" name='r_title' required autofocus>
+						    <span class="input-group-btn">
+							<button type="submit" class="btn  btn-primary btn-block">GO</button>
+							</span>
+						</form>	
+					</div>	
+				</div>
+				<div class="col-lg-6">
+					{% if flag == 0 %}
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					    <strong>提示</strong>您已提交过相同的报告！
+					</div>
+					{% endif %}
+					{% if flag == 1 %}<!---等号两边必须有空格--->
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					    <strong>提示</strong>提交成功，等待老师审核！
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>待评分报告</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul>
+				{% if sess %}
+				{% for report in reporting %}
+				<!--注意这里一个要要单引号，一个不用的,后面传入id是comment的主键-->
+					<h4><li><a href = "{%url 'home.views.comment' report.id%}">{{report.r_title}}</a></li></h4>
+				{% endfor %}
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>已评分报告</h3>
+		</div>
+		<div class="panel-body">	   
+			<ul>
+				{% for report in reported %}
+				<!--注意这里一个要要单引号，一个不用的,后面传入id是comment的主键--->
+				<h4><li><a href = "{%url 'home.views.show_comment' report.id%}">{{report.r_title}}</a></li></h4>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>我提交的报告</h3>
+		</div>
+		<div class="panel-body">	   
+			<ul>
+				{% for report in my_report %}
+					{% if report.r_agree == 1 %}<!---#已经审核通过-->
+					<h4>	<li><a href = "{%url 'home.views.my_report' report.id%}">{{report.r_title}}</a></li></h4>
+					{% else %}
+					<h4><li>{{report.r_title}}(等待老师审核)</li></h4>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}

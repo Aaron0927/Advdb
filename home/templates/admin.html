@@ -1,0 +1,57 @@
+﻿{% extends "admin_header.html" %}
+	{% block admin_body %}
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>已注册学生</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul class="list-group">
+				{% for s in stu %}
+				<li class="list-group-item">
+				<h4>
+					<strong>学号：</strong>{{s.s_id}}   
+					<strong>姓名：</strong>{{s.s_name}}
+				</h4>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>待审核报告</h3>
+		</div>
+
+		<div class="panel-body">	    
+			<ul class="list-group">
+				{% for a in agring %}
+				<li class="list-group-item">
+				<h4>
+					<strong>报告人：</strong>{{a.r_id}} <strong>报告题目：</strong>{{a.r_title}}
+					<a href = "{%url 'home.views.admin' a.id %}">同意</a>
+				</h4>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>已审核报告</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul class="list-group">
+				{% for s in agreed %}
+				<li class="list-group-item">
+				<h4>
+					<strong>报告人：</strong>{{s.r_id}}   
+					<strong>报告题目：</strong>
+					<a href = "{%url 'home.views.admin_report' s.id%}">{{s.r_title}}</a>
+				</h4>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>	
+	{% endblock %}
+

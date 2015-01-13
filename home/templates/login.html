@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>登录</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<style type="text/css">
+	.form-signin{
+		max-width:330px;
+		padding:15px;
+		margin:0 auto;
+	}
+	input{
+		margin-bottom:3px;
+	}
+
+body{
+		background-color:#CCC;
+	}
+</head>
+</style>
+<body>
+
+
+<div class="container">
+	<h1>报告评分系统</h1>
+	<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container-fluid">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="{%url 'home.views.regist'%}">注册</a></li>
+				</ul>
+		</div>
+	</nav>
+
+	<form role="form" class="form-signin" method = 'POST'>
+		{% csrf_token %}
+		<h2 class="form-signin-heading">欢迎登录</h2>
+		<input type="text" class="form-control" placeholder="输入学号" name='stuID' required autofocus>
+		<input type="password" class="form-control" placeholder="输入密码" name="passwd" required>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">登录</button>
+	</form>
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>																				
+
+</body>
+</html>

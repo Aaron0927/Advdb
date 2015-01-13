@@ -1,0 +1,73 @@
+﻿{% extends "admin_header.html" %}
+	{% block admin_body %}
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>报告基本信息</h3>
+		</div>
+		<div class="panel-body">	    
+			<ul class="list-group">
+				<li class="list-group-item">
+				<h4>
+					<strong>报告主题：</strong>{{report.r_title}}
+				</h4>
+				</li>
+	
+				<li class="list-group-item">
+				<h4>
+					<strong>报告人：</strong>{{report.r_reporter}}
+				</h4>
+				</li>
+
+				<li class="list-group-item">
+				<h4>
+					<strong>学号：</strong>{{report.r_id}}
+				</h4>
+				</li>
+
+				<li class="list-group-item">
+				<h4>
+					<strong>已评分人数：</strong>{{num}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>平均分：</strong>{{avg.c_score__avg}}
+				</h4>
+				</li>
+			</ul>
+		</div>
+	</div>	
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>详细评分情况</h3>
+		</div>
+
+	{% for com in comment_set %}
+		<div class="panel-body">	    
+			<ul class="list-group">
+				<li class="list-group-item">
+				<h4>
+					<strong>分数：</strong>{{com.c_score}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>评分学生：</strong>{{com.c_commenter}}
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>评分原因：</strong>{{com.c_reason}}
+				</h4>
+				</li>
+			</ul>
+		</div>
+	{% endfor %}
+	<div class="panel-body">
+		<center>
+			<a href="{%url 'home.views.admin_home'%}" class="btn btn-primary btn-lg active" role="button">返回</a>
+		</center>
+	</div>
+	</div>
+{% endblock %}

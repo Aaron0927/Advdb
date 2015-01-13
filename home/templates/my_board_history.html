@@ -1,0 +1,30 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}	
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3>历史公告</h3>
+		</div>
+
+		{% for b in board_set %}
+		<div class="panel-body">	    
+			<ul class="list-group">
+				<li class="list-group-item">
+				<h4>
+					<strong>标题：</strong>{{b.b_title}}({{b.b_time|date:"Y-m-d H:i:s"}})
+				</h4>
+				</li>
+				<li class="list-group-item">
+				<h4>
+					<strong>公告内容：</strong>{{b.b_content}}
+				</h4>
+				</li>
+			</ul>
+		</div>
+		{% endfor %}
+		<div class="panel-body">
+			<center>
+				<a href="{%url 'home.views.home' s_id%}" class="btn btn-primary btn-lg active" role="button">返回</a>
+			</center>
+		</div>
+	</div>
+{% endblock %}

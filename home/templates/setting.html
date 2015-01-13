@@ -1,0 +1,24 @@
+﻿{% extends "student_header.html" %}
+{% block student_body %}
+
+<div class="container">
+	<form role="form" class="form-signin" method = 'POST'>
+		{% csrf_token %}
+		<h2 class="form-signin-heading">修改密码</h2>
+		<input type="password" class="form-control" placeholder="输入新密码" name="passwd1" required>
+        <input type="password" class="form-control" placeholder="确认新密码" name="passwd2" required>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">提交</button>
+	</form>
+    {% if flag == 0 %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		    <strong>提示：</strong>密码修改成功！
+		</div>
+	{% elif flag == 1 %}
+		<div class="alert alert-danger alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		    <strong>提示：</strong>两次密码不一样，请重新输入！
+		</div>
+    {% endif %}
+</div>
+{% endblock %}

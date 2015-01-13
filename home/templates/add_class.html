@@ -1,0 +1,22 @@
+﻿{% extends "admin_header.html" %}
+	{% block admin_body %}
+		<form role="form" class="form-signin" method = 'POST'>
+			{% csrf_token %}
+			<h2 class="form-signin-heading">创建教室</h2>
+			<input type="text" class="form-control" placeholder="输入教室名" name='c_name' required autofocus>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">创 建</button>
+		</form>
+		
+		{% if flag == 0 %}
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<strong>提示</strong>班级创建成功，请在“我的班级”查看！
+			</div>
+			{% elif flag == 1 %}
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<strong>提示</strong>该班级已经存在！
+				</div>	
+			{% endif %}
+	{% endblock %}
+
